@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
-import sliceReducer from "../features/numbersSlice";
+import callingReducer from "../features/callingSlice";
+import numbersReducer from "../features/numbersSlice";
 
 const store = configureStore({
   reducer: {
-    numbers: sliceReducer,
+    numbers: numbersReducer,
+    calling: callingReducer,
   },
 });
 export default store;
