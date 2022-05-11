@@ -1,13 +1,16 @@
+import { useSelector } from "react-redux";
 import Action from "../Action/Action";
 import Display from "../Display/Display";
 
-const Actions = ({ calling, numberToCall }) => {
+const Actions = ({ calling }) => {
+  const numbers = useSelector((state) => state.numbers);
+
   return (
     <div className="actions">
-      <Display displayClass={"number"} text={numberToCall} />
+      <Display displayClass={"number"} text={numbers} />
       <Action
         link={"#"}
-        actionClass={`call ${numberToCall.length === 9 ? "active" : ""}`}
+        actionClass={`call ${numbers.length === 9 ? "active" : ""}`}
         text={"Call"}
       />
       <Action

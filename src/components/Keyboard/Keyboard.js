@@ -1,7 +1,7 @@
 import buttons from "../../data/buttons";
 import Key from "../Key/Key";
 
-const Keyboard = ({ action }) => {
+const Keyboard = () => {
   return (
     <div className="keyboard-container">
       <ol className="keyboard">
@@ -11,7 +11,6 @@ const Keyboard = ({ action }) => {
               key={button.text}
               buttonClass={button.class}
               text={button.text}
-              action={action}
             />
           );
         })}
