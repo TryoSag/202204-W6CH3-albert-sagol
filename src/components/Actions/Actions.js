@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import { useDispatch } from "react-redux";
+import PropTypes from "prop-types";
 import Action from "../Action/Action";
 import Display from "../Display/Display";
 import {
@@ -15,7 +16,7 @@ const Actions = ({ numbers, calling }) => {
     buttonClicked.preventDefault();
     const buttonClickedText = buttonClicked.target.textContent;
 
-    if (numbers.length === 9 && buttonClickedText === "Call") {
+    if (numbers.length === 9 && buttonClickedText === "Call" && !calling) {
       dispatch(setCallingOnActionCreator());
 
       timerId.current = setTimeout(() => {
@@ -48,3 +49,10 @@ const Actions = ({ numbers, calling }) => {
   );
 };
 export default Actions;
+
+Actions.propTypes = {
+  prop: PropTypes.shape({
+    numbers: PropTypes.number.isRequired,
+    calling: PropTypes.bool.isRequired,
+  }),
+};

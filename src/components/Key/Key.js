@@ -1,19 +1,8 @@
-import { useDispatch, useSelector } from "react-redux";
-import {
-  addNumberActionCreator,
-  deleteNumbersActionCreator,
-} from "../redux/features/numbersSlice";
+import PropTypes from "prop-types";
 
-const Key = ({ buttonClass, text }) => {
-  const dispatch = useDispatch();
-  const numbers = useSelector((state) => state.numbers);
-
+const Key = ({ buttonClass, text, action }) => {
   const clickAction = () => {
-    if (text === "delete") {
-      dispatch(deleteNumbersActionCreator());
-    } else if (numbers.length < 9 || numbers === "") {
-      dispatch(addNumberActionCreator(text));
-    }
+    action(text);
   };
 
   return (
@@ -25,3 +14,11 @@ const Key = ({ buttonClass, text }) => {
   );
 };
 export default Key;
+
+Key.propTypes = {
+  prop: PropTypes.shape({
+    buttonClass: PropTypes.string.isRequired,
+    text: PropTypes.string.isRequired,
+    action: PropTypes.func.isRequired,
+  }),
+};
